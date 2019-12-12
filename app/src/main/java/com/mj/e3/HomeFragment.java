@@ -707,7 +707,7 @@ public class HomeFragment extends Fragment {
 
     //region 重来
     static void restart() {
-        makeWordArray();//必须在前面
+        makeWordArray();//必须 前面
         wordPointer = 0;
         checkedWord = wordArray[wordPointer];
         tipTimes.setValue(1);
