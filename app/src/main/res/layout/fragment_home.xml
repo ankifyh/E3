@@ -297,246 +297,525 @@
                 <TableRow
                     android:id="@+id/qwe"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_height="20dp">
 
                     <Button
                         android:id="@+id/q"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/q" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/q"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/w"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/w" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/w"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/e"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/e" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/e"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/r"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/r" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/r"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/t"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/t" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/t"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/y"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/y" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/y"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/u"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/u" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/u"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/i"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/i" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/i"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/o"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/o" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/o"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/p"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/p" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/p"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/asd"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_weight="1">
 
                     <Button
                         android:id="@+id/a"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/a" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/a"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/s"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/s" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/s"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/d"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/d" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/d"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/f"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/f" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/f"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
 
                     <Button
                         android:id="@+id/g"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/g" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/g"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/h"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/h" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/h"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/j"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/j" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/j"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/k"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/k" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/k"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/l"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/l" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/l"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/zxc"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
+                    android:layout_weight="1">
 
                     <Button
                         android:id="@+id/z"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/z" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/z"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/x"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/x" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/x"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/c"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/c" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/c"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/v"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/v" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/v"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/space"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/space" />
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/space"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/b"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/b" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/b"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/n"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/n" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/n"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/m"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/m" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/m"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/pieHao"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/撇号" />
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/撇号"
+                        android:textAllCaps="false"
+                        android:textColor="@color/键盘区文字颜色"
+                        android:textSize="14sp" />
 
                 </TableRow>
 
