@@ -704,7 +704,7 @@ public class HomeFragment extends Fragment {
         return ori.split(" ");//单词边界或一个或多个空白字符
     }
     //endregion 用String制作字符串数组
-    
+
 
     //region 重来
     static void restart() {
