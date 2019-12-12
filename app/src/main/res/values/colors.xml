@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="可滚动部分背景颜色">#425066</color>
+    <color name="showBOX背景颜色">#11000000</color>
+    <color name="键盘区背景颜色">#E0F2F1</color>
+    <color name="showBox里文本的颜色">#000000</color>
+    <color name="colorBasicWhite">#ffffff</color>
+    <color name="colorAutoDismissToast">#77000000</color>
+    <color name="绝对透明">#00000000</color>
+    <color name="灰度透明">#09000000</color>
+    <color name="buttonGroup_bg">#838382</color>
+    <color name="web_button_gb">#DCDDD8</color>
+    <color name="目标色">#F3E5F5</color>
+    <color name="showBox2_bg">#E1F5FE</color>
+    <color name="show_box1_bg">#B2DFDB</color>
+    <color name="字体的灰色">#CECBCB</color>
+    <color name="键盘区文字颜色">#070707</color>
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/l"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.mj.e3.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_setFragment"
+            app:destination="@id/setFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_setWenFragment"
+            app:destination="@id/setWenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setFragment"
+        android:name="com.mj.e3.SetFragment"
+        android:label="fragment_set"
+        tools:layout="@layout/fragment_set" >
+        <action
+            android:id="@+id/action_setFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setWenFragment"
+        android:name="com.mj.e3.SetWenFragment"
+        android:label="fragment_set_wen"
+        tools:layout="@layout/fragment_set_wen" >
+        <action
+            android:id="@+id/action_setWenFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+</navigation>

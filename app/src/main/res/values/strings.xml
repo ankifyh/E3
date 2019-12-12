@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">随缘背单词</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="观察区文字">观察区</string>
+    <string name="设文输入框里的提示文字">请在这里输入(粘贴)你想用来学习单词的文本!</string>
+    <string name="commit_new_text">提交</string>
+    <string name="回到练习页">回到练习页</string>
+    <string name="占位的文本">占位的文本 Hello</string>
+    <string name="tip">信息</string>
+    <string name="but_set">🔧</string>
+    <string name="but_setWen">设文</string>
+    <string name="btn_ou_lu">欧路</string>
+    <string name="screen">大/小屏</string>
+    <string name="bot_web4">空着</string>
+    <string name="translate2">译本句</string>
+    <string name="but_web5">空着</string>
+    <string name="search">搜本词</string>
+    <string name="but_web7">空着</string>
+    <string name="text_没事的时候请挡住">没事的时候请挡住</string>
+    <string name="applog">applog</string>
+    <string name="提示文字">提示文字</string>
+    <string name="btn_redo">重来</string>
+    <string name="提示选择文章">步骤1: 选择一篇词汇难度符合自己当前能力的文章,将其拷贝,然后回到当前页,点击设文,把拷贝的文章粘贴到指定区域</string>
+    <string name="提示下面是练习区">下面是单词练习区</string>
+    <string name="使用说明">使用说明</string>
+    <string name="btn_tipWen">文提</string>
+    <string name="btn_搜索">🔍</string>
+    <string name="btn_share">分享</string>
+    <string name="translate1">译上一句</string>
+    <string name="web_back">网页后退</string>
+    <string name="web_go_forword">网页前进</string>
+    <string name="dp">dp</string>
+    <string name="朗读">🔊</string>
+    <string name="演示文本长">这些知识一些演示文本这些知识一些演示文本这些知识一些演示文本这些知识一些演示文本这些知识一些演示文本这些知识一些演示文本这些知识一些演示文本这些知识一些演示文本这些知识一些演示文本这些知识一些演示文本</string>
+    <string name="right_button">♬</string>
+    <string name="left_button">♬</string>
+    <string name="play_all_stop">全文朗读/暂停</string>
+    <string name="play_now">读当前句</string>
+    <string name="restart">重来</string>
+    <string name="button">♬</string>
+    <string name="hint">输入你听到的最后一个单词</string>
+
+
+</resources>

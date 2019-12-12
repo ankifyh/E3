@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    设置背景色-->
+    <solid android:color="@color/showBOX背景颜色"/>
+    <stroke
+        android:width="0dp"/>
+    <corners
+        />
+    <gradient
+        android:angle="90"
+        android:startColor="@color/show_box1_bg"
+        android:endColor="@color/目标色"/>
+    <padding
+        android:right="10dp"/>
+</shape>

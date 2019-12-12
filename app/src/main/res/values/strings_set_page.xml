@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="提示设置web滚到xx位置">查词后页面自动滚动到xx位置,单位是dp</string>
+    <string name="tip_user_to_Change_emoji">自定义输错的词的前面的符号,可以是emoji符号</string>
+    <string name="tip_defualt_emoji">默认是👤</string>
+</resources>

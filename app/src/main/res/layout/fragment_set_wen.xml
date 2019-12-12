@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.mj.e3.SetWenVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SetWenFragment">
+
+        <Button
+            android:id="@+id/btn_commit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/commit_new_text"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_box"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.925"
+            app:layout_constraintStart_toEndOf="@+id/edit_box" />
+
+        <EditText
+            android:id="@+id/edit_box"
+            android:layout_width="288dp"
+            android:layout_height="201dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="332dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/设文输入框里的提示文字"
+            android:inputType="textMultiLine"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="commit_new_textcommit_new_textcommit_new_textcommit_new_textcommit_new_textcommit_new_textcommit_new_textcommit_new_textcommit_new_textcommit_new_textcommit_new_textcommit_new_textcommit_new_text" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="72dp"
+            android:onClick="@{(v)->data.toHomePage(v)}"
+            android:text="@string/回到练习页"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

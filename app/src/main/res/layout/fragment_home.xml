@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.mj.e3.HomeVM" />
+        <import
+            alias="HomeFragment"
+            type="com.mj.e3.HomeFragment"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutA"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ground_floor"
+        android:orientation="vertical"
+        tools:context=".HomeFragment">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/line3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/line10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutB1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@id/boundary_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/show_word_index_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{String.valueOf(data.getWordIndex())}"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="24sp"
+                    tools:layout_conversion_absoluteHeight="234dp"
+                    tools:layout_conversion_absoluteWidth="206dp"
+                    tools:text="145" />
+
+                <TextView
+                    android:id="@+id/show_word_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{String.valueOf(data.getWord())}"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="24sp"
+                    android:visibility="visible"
+                    tools:layout_conversion_absoluteHeight="0dp"
+                    tools:layout_conversion_absoluteWidth="0dp"
+                    tools:text="word" />
+
+                <TextView
+                    android:id="@+id/litter_index"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{String.valueOf(data.getLitterIndex())}"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="24sp"
+                    tools:layout_conversion_absoluteHeight="234dp"
+                    tools:layout_conversion_absoluteWidth="206dp"
+                    tools:text="7" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/boundary_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="46dp" />
+
+        <LinearLayout
+            style="?android:attr/buttonStyleSmall"
+            android:id="@+id/buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="4dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/constraintLayoutB2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/boundary_line">
+
+            <Button
+                android:id="@+id/restart"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/restart"
+                android:textSize="12sp" />
+
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/button13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/button"
+                android:textSize="12sp" />
+
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/button12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/button"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/play_all"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/play_all_stop"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/readSentence"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/play_now"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutB2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/webScrollLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttons">
+
+            <ScrollView
+                android:id="@+id/ScrollView_right"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/pre_show_box"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="18sp"
+                        android:layout_weight="1"
+                        android:background="@drawable/show_box2"
+                        android:gravity="bottom|end"
+                        android:lineSpacingMultiplier="1.7"
+                        android:paddingStart="14sp"
+                        android:paddingTop="18sp"
+                        android:paddingEnd="14sp"
+                        android:radius="15dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/字体的灰色"
+                        android:textIsSelectable="true"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="RtlCompat"
+                        tools:text="这些知识一些演示文本 123" />
+
+                    <TextView
+                        android:id="@+id/showBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/绝对透明"
+                        android:gravity="bottom|end"
+                        android:lineSpacingMultiplier="1.7"
+                        android:paddingStart="14sp"
+                        android:paddingTop="18sp"
+                        android:paddingEnd="14sp"
+                        android:radius="15dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/showBox里文本的颜色"
+                        android:textIsSelectable="true"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="RtlCompat"
+                        tools:text="这些知识一些演示文本" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </ScrollView>
+
+            <TableLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="#FFECB3"
+                android:padding="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.41"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints"
+                tools:layout_conversion_absoluteHeight="379dp"
+                tools:layout_conversion_absoluteWidth="411dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/first_height">
+
+                    <Button
+                        android:id="@+id/button_left"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="@dimen/buttons_left_right"
+                        android:layout_height="@dimen/buttons_left_right"
+                        android:text="@string/right_button" />
+
+                    <TextView
+                        android:id="@+id/times"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@{String.valueOf(data.getTipTimes())}"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:layout_conversion_absoluteHeight="32dp"
+                        tools:layout_conversion_absoluteWidth="103dp"
+                        tools:text="5" />
+
+                    <TextView
+                        android:id="@+id/inputBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:ellipsize="start"
+                        android:gravity="center"
+                        android:hint="@string/hint"
+                        android:singleLine="true"
+                        android:textAlignment="center"
+                        android:textColor="@color/showBox里文本的颜色"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/字体大小" />
+
+                    <Button
+                        android:id="@+id/button_right"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="@dimen/buttons_left_right"
+                        android:layout_height="@dimen/buttons_left_right"
+                        android:text="@string/left_button" />
+
+                    <Button
+                        android:id="@+id/play"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="0dp"
+                        android:text="@string/朗读"
+                        android:textAllCaps="false"
+                        android:textSize="12sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/qwe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/q"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/q" />
+
+                    <Button
+                        android:id="@+id/w"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/w" />
+
+                    <Button
+                        android:id="@+id/e"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/e" />
+
+                    <Button
+                        android:id="@+id/r"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/r" />
+
+                    <Button
+                        android:id="@+id/t"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/t" />
+
+                    <Button
+                        android:id="@+id/y"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/y" />
+
+                    <Button
+                        android:id="@+id/u"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/u" />
+
+                    <Button
+                        android:id="@+id/i"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/i" />
+
+                    <Button
+                        android:id="@+id/o"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/o" />
+
+                    <Button
+                        android:id="@+id/p"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/p" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/asd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/a"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/a" />
+
+                    <Button
+                        android:id="@+id/s"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/s" />
+
+                    <Button
+                        android:id="@+id/d"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/d" />
+
+                    <Button
+                        android:id="@+id/f"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/f" />
+
+
+                    <Button
+                        android:id="@+id/g"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/g" />
+
+                    <Button
+                        android:id="@+id/h"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/h" />
+
+                    <Button
+                        android:id="@+id/j"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/j" />
+
+                    <Button
+                        android:id="@+id/k"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/k" />
+
+                    <Button
+                        android:id="@+id/l"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/l" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/zxc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <Button
+                        android:id="@+id/z"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/z" />
+
+                    <Button
+                        android:id="@+id/x"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/x" />
+
+                    <Button
+                        android:id="@+id/c"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/c" />
+
+                    <Button
+                        android:id="@+id/v"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/v" />
+
+                    <Button
+                        android:id="@+id/space"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/space" />
+
+                    <Button
+                        android:id="@+id/b"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/b" />
+
+                    <Button
+                        android:id="@+id/n"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/n" />
+
+                    <Button
+                        android:id="@+id/m"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/m" />
+
+                    <Button
+                        android:id="@+id/pieHao"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/撇号" />
+
+                </TableRow>
+
+                <TableRow
+                    style="?android:attr/buttonBarStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/set"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:onClick="@{(v)->data.toSetPage(v)}"
+                        android:text="@string/but_set"
+                        android:textAllCaps="false"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/set_text"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:onClick="@{(v)->data.toSetWenPage(v)}"
+                        android:text="@string/but_setWen"
+                        android:textAllCaps="false"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/btn_redo"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/btn_redo"
+                        android:textAllCaps="false"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/wen2"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/btn_tipWen"
+                        android:textAllCaps="false"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/btn_dict1"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/btn_ou_lu"
+                        android:textAllCaps="false"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/wang_ye"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/btn_搜索"
+                        android:textAllCaps="false"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/shared"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/btn_share"
+                        android:textAllCaps="false"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/tong"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="0dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:text="@string/通配符"
+                        android:textAllCaps="false"
+                        android:textSize="@dimen/字母字体大小" />
+
+                </TableRow>
+
+            </TableLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/webScrollLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="484dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutC"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/webScrollLine">
+
+            <LinearLayout
+                android:id="@+id/button_group"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:background="@color/web_button_gb"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_constraintBottom_toTopOf="webS">
+
+                <Button
+                    android:id="@+id/btnWeb"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/web_button_gb"
+                    android:onClick="@{()->data.beMinWebBox()}"
+                    android:text="@string/translate1"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btnWeb3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/web_button_gb"
+                    android:onClick="@{()->data.beMinWebBox()}"
+                    android:text="@string/translate2"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/web_back"
+                    app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
+
+                <TextView
+                    android:id="@+id/drawableTextView"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ic_format_line_spacing_black_24dp"
+                    android:textAlignment="center" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/web_go_forword"
+                    app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+                <Button
+                    android:id="@+id/search"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/web_button_gb"
+                    android:text="@string/search"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btnWeb2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/web_button_gb"
+                    android:onClick="@{()->data.beMinWebBox()}"
+                    android:text="@string/screen"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#00DB3030"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button_group">
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_x="163dp"
+                    android:layout_y="96dp"
+                    android:visibility="gone" />
+            </WebView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
