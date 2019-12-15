@@ -22,13 +22,6 @@
         tools:context=".HomeFragment">
 
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/boundary_line"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="16dp" />
-
         <WebView
             android:id="@+id/webView"
             android:layout_width="0dp"
@@ -37,42 +30,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/boundary_line" />
-
-        <LinearLayout
-            android:id="@+id/buttons"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="4dp"
-            android:orientation="horizontal"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/constraintLayoutB2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/boundary_line"
-            tools:visibility="gone">
-
-            <Button
-                android:id="@+id/restart"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/restart"
-                android:textSize="12sp" />
-
-            <Button
-                android:id="@+id/play_all"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/play_all_stop"
-                android:textSize="12sp" />
-
-        </LinearLayout>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutB2"
@@ -81,7 +39,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/buttons">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ScrollView
                 android:id="@+id/ScrollView"
@@ -110,7 +68,7 @@
                         android:textColor="@color/字体的灰色"
                         android:textIsSelectable="true"
                         android:textSize="18sp"
-                        android:visibility="invisible"
+                        android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -169,32 +127,6 @@
                         android:background="@drawable/ic_format_line_spacing_black_24dp"
                         android:contentDescription="@string/控制网页框大小的滑动按钮"
                         android:textAlignment="center" />
-
-                    <TextView
-                        android:id="@+id/litter_index"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="@{String.valueOf(data.getLitterIndex())}"
-                        android:textAlignment="center"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="14sp"
-                        tools:layout_conversion_absoluteHeight="234dp"
-                        tools:layout_conversion_absoluteWidth="206dp"
-                        tools:text="7" />
-
-                    <TextView
-                        android:id="@+id/times"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="@{String.valueOf(data.getTipTimes())}"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        tools:layout_conversion_absoluteHeight="32dp"
-                        tools:layout_conversion_absoluteWidth="103dp"
-                        tools:text="5" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -617,24 +549,6 @@
                     android:layout_weight="1">
 
                     <Button
-                        android:id="@+id/pieHao"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="44dp"
-                        android:layout_margin="0dp"
-                        android:layout_weight="1"
-                        android:ems="1"
-                        android:lineSpacingExtra="0sp"
-                        android:lineSpacingMultiplier="0"
-                        android:maxLines="1"
-                        android:padding="0dp"
-                        android:singleLine="true"
-                        android:text="@string/撇号"
-                        android:textAllCaps="false"
-                        android:textColor="#D50000"
-                        android:textSize="14sp" />
-
-                    <Button
                         android:id="@+id/z"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
@@ -761,7 +675,7 @@
                         android:textSize="14sp" />
 
                     <Button
-                        android:id="@+id/space"
+                        android:id="@+id/pieHao"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="44dp"
@@ -773,9 +687,9 @@
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
-                        android:text="@string/space"
+                        android:text="@string/撇号"
                         android:textAllCaps="false"
-                        android:textColor="#D50000"
+                        android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
                 </TableRow>
@@ -787,33 +701,10 @@
                     android:layout_weight="1">
 
                     <Button
-                        android:id="@+id/set_text"
-                        style="?android:attr/buttonBarStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="30dp"
-                        android:layout_weight="1"
-                        android:onClick="@{(v)->data.toSetWenPage(v)}"
-                        android:text="@string/but_setWen"
-                        android:textAllCaps="false"
-                        android:textColor="#AA00FF"
-                        android:textSize="12sp" />
-
-                    <Button
-                        android:id="@+id/btn_redo"
-                        style="?android:attr/buttonBarStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="30dp"
-                        android:layout_margin="0dp"
-                        android:layout_weight="1"
-                        android:text="@string/btn_redo"
-                        android:textAllCaps="false"
-                        android:textSize="12sp" />
-
-                    <Button
                         android:id="@+id/share1"
                         style="?android:attr/buttonBarStyle"
                         android:layout_width="0dp"
-                        android:layout_height="30dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:text="@string/btn1"
@@ -821,28 +712,35 @@
                         android:textColor="#03A9F4"
                         android:textSize="12sp" />
 
-                    <Button
-                        android:id="@+id/share2"
-                        style="?android:attr/buttonBarStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="30dp"
-                        android:layout_margin="0dp"
-                        android:layout_weight="1"
-                        android:text="@string/share2"
-                        android:textAllCaps="false"
-                        android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/times"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@{String.valueOf(data.getTipTimes())}"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:layout_conversion_absoluteHeight="32dp"
+                        tools:layout_conversion_absoluteWidth="103dp"
+                        tools:text="5" />
 
                     <Button
-                        android:id="@+id/share"
-                        style="?android:attr/buttonBarStyle"
+                        android:id="@+id/space"
+                        style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="30dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
-                        android:layout_weight="1"
-                        android:text="@string/btn_share"
+                        android:layout_weight="4"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/space"
                         android:textAllCaps="false"
-                        android:textColor="#3F51B5"
-                        android:textSize="12sp" />
+                        android:textColor="#304FFE"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/tong"
@@ -861,7 +759,7 @@
                         android:id="@+id/more"
                         style="?android:attr/buttonBarStyle"
                         android:layout_width="0dp"
-                        android:layout_height="30dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:text="@string/btn_more"
@@ -879,7 +777,7 @@
                         android:id="@+id/set"
                         style="?android:attr/buttonBarStyle"
                         android:layout_width="0dp"
-                        android:layout_height="30dp"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
                         android:onClick="@{(v)->data.toSetPage(v)}"
                         android:text="@string/but_set"
@@ -888,10 +786,45 @@
                         android:textSize="12sp" />
 
                     <Button
+                        android:id="@+id/set_text"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:onClick="@{(v)->data.toSetWenPage(v)}"
+                        android:text="@string/but_setWen"
+                        android:textAllCaps="false"
+                        android:textColor="#AA00FF"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/share"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/btn_share"
+                        android:textAllCaps="false"
+                        android:textColor="#3F51B5"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/btn_redo"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/btn_redo"
+                        android:textAllCaps="false"
+                        android:textSize="12sp" />
+
+                    <Button
                         android:id="@+id/btnWeb"
                         style="?android:attr/buttonBarStyle"
                         android:layout_width="0dp"
-                        android:layout_height="30dp"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
                         android:text="@string/translate1"
                         android:textSize="12sp" />
@@ -900,32 +833,71 @@
                         android:id="@+id/btnWeb3"
                         style="?android:attr/buttonBarStyle"
                         android:layout_width="0dp"
-                        android:layout_height="30dp"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
                         android:text="@string/translate2"
                         android:textColor="#00C853"
                         android:textSize="12sp" />
 
                     <Button
-                        android:id="@+id/share_instance"
-                        style="?android:attr/buttonBarStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="30dp"
-                        android:layout_weight="1.9"
-                        android:text="@string/screen"
-                        android:textColor="#00B0FF"
-                        android:textSize="12sp" />
-
-                    <Button
                         android:id="@+id/search"
                         style="?android:attr/buttonBarStyle"
                         android:layout_width="0dp"
-                        android:layout_height="30dp"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
                         android:text="@string/search"
                         android:textColor="#DD2C00"
                         android:textSize="12sp" />
 
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/litter_index"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@{String.valueOf(data.getLitterIndex())}"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14sp"
+                        tools:layout_conversion_absoluteHeight="234dp"
+                        tools:layout_conversion_absoluteWidth="206dp"
+                        tools:text="7" />
+
+                    <Button
+                        android:id="@+id/restart"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:text="@string/restart"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/share_instance"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:text="@string/screen"
+                        android:textColor="#00B0FF"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/play_all"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:text="@string/play_all_stop"
+                        android:textSize="12sp" />
                 </TableRow>
 
             </TableLayout>

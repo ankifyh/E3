@@ -27,6 +27,6 @@
     <string name="x">x</string>
     <string name="y">y</string>
     <string name="z">z</string>
-    <string name="撇号">\'</string>
-    <string name="space">Enter</string>
+    <string name="撇号">’</string>
+    <string name="space">切换到下一个单词/重复练习本单词</string>
 </resources>

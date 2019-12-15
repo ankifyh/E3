@@ -17,7 +17,7 @@ import com.mj.e3.databinding.ActivityMainBinding;
 
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public  class MainActivity extends AppCompatActivity {
 
     static public ActivityMainBinding binding;
     HomeVM homeVm;

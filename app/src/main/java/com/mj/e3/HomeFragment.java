@@ -93,6 +93,8 @@ public class HomeFragment extends Fragment {
         translateURL = sharedPreferences.getString(getString(R.string.key_translateURL), "没有设置####");
         dictionaryURL = sharedPreferences.getString(getString(R.string.key_dictionaryURL), "没有设置");
         wordPointer = sharedPreferences.getInt(getString(R.string.key_wordPointer), 0);
+        fragmentHomeBinding.showBox.setText(sharedPreferences.getString(getString(R.string.key_showBox),""));
+        fragmentHomeBinding.setText.setText(sharedPreferences.getString(getString(R.string.key_preShowBox),""));
         wordArray = makeWordArray();
         checkedWord = getWordByWordPointer(wordPointer);
 
@@ -115,11 +117,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+                fragmentHomeBinding.ScrollView.fullScroll(ScrollView.FOCUS_DOWN);//滚动到底部
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                editor.putString(getString(R.string.key_preShowBox),fragmentHomeBinding.preShowBox.getText().toString());
+                editor.commit();
             }
 
             @Override
@@ -128,6 +132,30 @@ public class HomeFragment extends Fragment {
             }
         });
         //endregion 背景box监听器
+
+        //region showBox 的监听器 ,会在里面对输入的字母进行判断
+        fragmentHomeBinding.showBox.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                new Handler().post(new Runnable() {
+                    @Override
+                    public void run() {
+                        fragmentHomeBinding.ScrollView.fullScroll(ScrollView.FOCUS_DOWN);//滚动到底部
+                    }
+                });
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                editor.putString(getString(R.string.key_showBox),fragmentHomeBinding.showBox.getText().toString());
+                editor.commit();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+//endregion ,,
 
         //region 翻译本句Button的单击事件监听器
         fragmentHomeBinding.btnWeb3.setOnClickListener(new View.OnClickListener() {
@@ -143,12 +171,12 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //显示
-                if (fragmentHomeBinding.buttons.getVisibility() == View.GONE) {
-                    fragmentHomeBinding.buttons.setVisibility(View.VISIBLE);
+                if (fragmentHomeBinding.tableRow3.getVisibility() == View.GONE) {
+                    fragmentHomeBinding.tableRow3.setVisibility(View.VISIBLE);
                 }
                 //隐藏
                 else {
-                    fragmentHomeBinding.buttons.setVisibility(View.GONE);
+                    fragmentHomeBinding.tableRow3.setVisibility(View.GONE);
                 }
             }
         });
@@ -167,18 +195,6 @@ public class HomeFragment extends Fragment {
         });
         //endregion
 
-        //region share2 单击事件
-        fragmentHomeBinding.share2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent shareIntent = new Intent();
-                shareIntent.setAction(Intent.ACTION_SEND);
-                shareIntent.setType("text/plain");
-                shareIntent.putExtra(Intent.EXTRA_TEXT, checkedWord);
-                startActivity(shareIntent);
-            }
-        });
-        //endregion
 
         //region share 单机事件
         fragmentHomeBinding.share.setOnClickListener(new View.OnClickListener() {
@@ -241,6 +257,7 @@ public class HomeFragment extends Fragment {
         });
 //endregion 字母索引监听器
 
+
         //region 新单词监听器,也就是inputBox2的查词
         fragmentHomeBinding.inputBox2.addTextChangedListener(new TextWatcher() {
             @Override
@@ -264,7 +281,12 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                //preShowBox加词
+                fragmentHomeBinding.preShowBox.append(checkedWord);
+                //showBox加词
+                if (wordPointer>0){
+                    fragmentHomeBinding.showBox.append(wordArray[wordPointer-1]);
+                }
             }
 
             @Override
@@ -323,23 +345,15 @@ public class HomeFragment extends Fragment {
         //endregion 播放全文按钮的监听器
 
         // region 搜索按钮的单击事件
-        fragmentHomeBinding.search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String s = searchEngine.replace("####", checkedWord);
-                webView.loadUrl(s);
+        fragmentHomeBinding.search.setOnClickListener(v -> {
+            String s = searchEngine.replace("####", checkedWord);
+            webView.loadUrl(s);
 
-            }
         });
         //endregion 搜索按钮的单击事件
 
         //region OnTouchListener,滑块,目前处于已经无用状态
-        fragmentHomeBinding.drawable.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
+        fragmentHomeBinding.drawable.setOnTouchListener((v, event) -> true);
         //endregion OnTouchListener 的监听器
 
         // region       times的监听器
@@ -361,218 +375,41 @@ public class HomeFragment extends Fragment {
         //endregion times的监听器
 
         //region 26个字母button的监听器
-
-        fragmentHomeBinding.q.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[qwas]");
-            }
-        });
-
-        fragmentHomeBinding.w.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[wqeasd]");
-            }
-        });
-
-
-        fragmentHomeBinding.e.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[wersdf]");
-            }
-        });
-        fragmentHomeBinding.r.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[ertdfg]");
-            }
-        });
-        fragmentHomeBinding.t.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[rtyfgh]");
-            }
-        });
-
-        fragmentHomeBinding.y.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[tyughj]");
-            }
-        });
-        fragmentHomeBinding.u.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[yuihjk]");
-            }
-        });
-        fragmentHomeBinding.i.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[uiojkl]");
-            }
-        });
-        fragmentHomeBinding.o.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[iopkl]");
-            }
-        });
-        fragmentHomeBinding.p.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[opl]");
-            }
-        });
-        fragmentHomeBinding.a.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[qwaszx]");
-            }
-        });
-        fragmentHomeBinding.s.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[qweasdzxc]");
-            }
-        });
-        fragmentHomeBinding.d.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[wersdfxcv]");
-            }
-        });
-        fragmentHomeBinding.f.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[ertdfgcv]");
-            }
-        });
-        fragmentHomeBinding.g.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[rtyfghvbn]");
-            }
-        });
-        fragmentHomeBinding.h.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[tyughjbnm]");
-            }
-        });
-        fragmentHomeBinding.j.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[uihjkbn]");
-            }
-        });
-        fragmentHomeBinding.k.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[iopjklnm’]");
-            }
-        });
-        fragmentHomeBinding.l.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[opklm’]");
-            }
-        });
-        fragmentHomeBinding.z.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[aszx]");
-            }
-        });
-        fragmentHomeBinding.x.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[asdzxc]");
-            }
-        });
-        fragmentHomeBinding.c.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[sdfxcv]");
-            }
-        });
-        fragmentHomeBinding.v.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[dfcvb]");
-            }
-        });
-        fragmentHomeBinding.b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[hjvbn]");
-            }
-        });
-        fragmentHomeBinding.n.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[jkbnm]");
-            }
-        });
-        fragmentHomeBinding.m.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[klnmv]");
-            }
-        });
-        fragmentHomeBinding.pieHao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[’']");
-            }
-        });
-        fragmentHomeBinding.space.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[ ]");
-            }
-        });
-        fragmentHomeBinding.tong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                judge("[a-z’]");
-            }
-        });
+        fragmentHomeBinding.q.setOnClickListener(v -> judge("[qwas]"));
+        fragmentHomeBinding.w.setOnClickListener(v -> judge("[wqeasd]"));
+        fragmentHomeBinding.e.setOnClickListener(v -> judge("[wersdf]"));
+        fragmentHomeBinding.r.setOnClickListener(v -> judge("[ertdfg]"));
+        fragmentHomeBinding.t.setOnClickListener(v -> judge("[rtyfgh]"));
+        fragmentHomeBinding.y.setOnClickListener(v -> judge("[tyughj]"));
+        fragmentHomeBinding.u.setOnClickListener(v -> judge("[yuihjk]"));
+        fragmentHomeBinding.i.setOnClickListener(v -> judge("[uiojkl]"));
+        fragmentHomeBinding.o.setOnClickListener(v -> judge("[iopkl]"));
+        fragmentHomeBinding.p.setOnClickListener(v -> judge("[opl]"));
+        fragmentHomeBinding.a.setOnClickListener(v -> judge("[qwaszx]"));
+        fragmentHomeBinding.s.setOnClickListener(v -> judge("[qweasdzxc]"));
+        fragmentHomeBinding.d.setOnClickListener(v -> judge("[wersdfxcv]"));
+        fragmentHomeBinding.f.setOnClickListener(v -> judge("[ertdfgcv]"));
+        fragmentHomeBinding.g.setOnClickListener(v -> judge("[rtyfghvbn]"));
+        fragmentHomeBinding.h.setOnClickListener(v -> judge("[tyughjbnm]"));
+        fragmentHomeBinding.j.setOnClickListener(v -> judge("[uihjkbn]"));
+        fragmentHomeBinding.k.setOnClickListener(v -> judge("[iopjklnm’]"));
+        fragmentHomeBinding.l.setOnClickListener(v -> judge("[opklm’]"));
+        fragmentHomeBinding.z.setOnClickListener(v -> judge("[aszx]"));
+        fragmentHomeBinding.x.setOnClickListener(v -> judge("[asdzxc]"));
+        fragmentHomeBinding.c.setOnClickListener(v -> judge("[sdfxcv]"));
+        fragmentHomeBinding.v.setOnClickListener(v -> judge("[dfcvb]"));
+        fragmentHomeBinding.b.setOnClickListener(v -> judge("[hjvbn]"));
+        fragmentHomeBinding.n.setOnClickListener(v -> judge("[jkbnm]"));
+        fragmentHomeBinding.m.setOnClickListener(v -> judge("[klnmv]"));
+        fragmentHomeBinding.pieHao.setOnClickListener(v -> judge("[’']"));
+        fragmentHomeBinding.space.setOnClickListener(v -> judge("[ ]"));
+        fragmentHomeBinding.tong.setOnClickListener(v -> judge("[a-z’ ]"));
 //endregion 三个 button 的监听器
 
         //region 重新开始按钮监听器
-        fragmentHomeBinding.restart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                restart();
-            }
-        });
+        fragmentHomeBinding.restart.setOnClickListener(v -> restart());
         //endregion 重新开始按钮监听器
 
-        //region show Box2 的监听器 ,会在里面对输入的字母进行判断
-        fragmentHomeBinding.showBox.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                new Handler().post(new Runnable() {
-                    @Override
-                    public void run() {
-                        fragmentHomeBinding.ScrollView.fullScroll(ScrollView.FOCUS_DOWN);//滚动到底部
-                    }
-                });
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
-//endregion ,,
 
         //region 提示按钮监听器
         fragmentHomeBinding.btnTip.setOnClickListener(new View.OnClickListener() {
@@ -612,7 +449,7 @@ public class HomeFragment extends Fragment {
         inputBox.append(rightLitter);
 
         //检查背景页是关闭的还是开启的,如果是开着的就把它关闭
-        fragmentHomeBinding.preShowBox.setVisibility(View.INVISIBLE);
+//        fragmentHomeBinding.preShowBox.setVisibility(View.INVISIBLE);
         fragmentHomeBinding.inputBox2.setVisibility(View.INVISIBLE);
 
 
