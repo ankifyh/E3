@@ -57,6 +57,8 @@
     <string name="restart">重来</string>
     <string name="button">♬</string>
     <string name="hint">输入你听到的最后一个单词</string>
+    <string name="控制网页框大小的滑动按钮">控制网页框大小的滑动按钮</string>
+    <string name="btn_more">更多</string>
 
 
 </resources>

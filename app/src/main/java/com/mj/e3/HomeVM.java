@@ -13,11 +13,9 @@ import androidx.navigation.Navigation;
 import static com.mj.e3.HomeFragment.checkedWord;
 
 public class HomeVM extends AndroidViewModel {
-    static int wordPointer = 0;
     Context context;
     static MutableLiveData<Integer> tipTimes = new MutableLiveData<>(1);
     static MutableLiveData<String> nextWord = new MutableLiveData<>();
-    private static MutableLiveData<Integer> wordIndex = new MutableLiveData<>(0);
     static MutableLiveData<Integer> litterIndex = new MutableLiveData<>(0);
     static String newText;
 
@@ -41,9 +39,6 @@ public class HomeVM extends AndroidViewModel {
     public MutableLiveData<Integer> getTipTimes() {
         return tipTimes;
     }
-    public MutableLiveData<Integer> getWordIndex() {
-        return wordIndex;
-    }
     public MutableLiveData<Integer> getLitterIndex() {
         return litterIndex;
     }
@@ -54,10 +49,6 @@ public class HomeVM extends AndroidViewModel {
             nextWord.setValue(checkedWord);
         }
         return nextWord;
-    }
-
-    public void beMinWebBox(){
-        CustomToast.INSTANCE.showToast(context, "空的");
     }
 
 }

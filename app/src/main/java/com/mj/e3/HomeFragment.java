@@ -29,14 +29,16 @@ import androidx.lifecycle.ViewModelProviders;
 import com.mj.e3.databinding.FragmentHomeBinding;
 
 import java.util.Objects;
+
+import static android.content.Context.ACTIVITY_SERVICE;
 import static androidx.constraintlayout.widget.Constraints.TAG;
 import static com.mj.e3.HomeVM.litterIndex;
 import static com.mj.e3.HomeVM.nextWord;
 import static com.mj.e3.HomeVM.tipTimes;
-import static com.mj.e3.HomeVM.wordPointer;
 import static com.mj.e3.MainActivity.editor;
 import static com.mj.e3.MainActivity.play;
 import static com.mj.e3.MainActivity.sharedPreferences;
+import static com.mj.e3.MainActivity.textToSpeech;
 
 
 /**
@@ -45,6 +47,7 @@ import static com.mj.e3.MainActivity.sharedPreferences;
 @SuppressWarnings({"SingleStatementInBlock", "ConstantConditions", "JavaDoc"})
 public class HomeFragment extends Fragment {
 
+    private static int wordPointer;
     @SuppressLint("StaticFieldLeak")
     private static FragmentHomeBinding fragmentHomeBinding;
     static private String rightLitter;
@@ -53,6 +56,8 @@ public class HomeFragment extends Fragment {
     private TextView showBox;
     static String stingIcon;//图标字符串,绘文字表情
     static String translateURL;
+    static String dictionaryURL;
+    @SuppressLint("StaticFieldLeak")
     private static WebView webView;
     private String searchEngine = "http://m.baidu.com/s?wd=####&ie=UTF-8";
     private static String[] wordArray;
@@ -87,6 +92,8 @@ public class HomeFragment extends Fragment {
         fragmentHomeBinding.webScrollLine.setGuidelineBegin((int) sharedPreferences.getFloat(getString(R.string.webBoxH), 300.0f));//安卓初始化webBox高度
         stingIcon = sharedPreferences.getString(getString(R.string.emojiOfShowBox), "\uD83D\uDC80");//安卓初始化showBox里的绘文字表情
         translateURL = sharedPreferences.getString(getString(R.string.key_translateURL),"没有设置####");
+        dictionaryURL = sharedPreferences.getString(getString(R.string.key_dictionaryURL),"没有设置");
+        wordPointer = sharedPreferences.getInt(getString(R.string.key_wordPointer),0);
         wordArray = makeWordArray();
         checkedWord = getWordByWordPointer(wordPointer);
 
@@ -118,10 +125,54 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                disposeSentence();
+                 
             }
         });
         //endregion 背景box监听器
+
+        //region 翻译本句Button的单击事件监听器
+        fragmentHomeBinding.btnWeb3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                disposeSentence();
+            }
+        });
+        //endregion Button翻译本句的单击事件监听器
+
+        //region more的单击事件
+        fragmentHomeBinding.more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //显示
+                if(fragmentHomeBinding.buttons.getVisibility()==View.GONE){
+                    fragmentHomeBinding.buttons.setVisibility(View.VISIBLE);
+                }
+                //隐藏
+                else {
+                    fragmentHomeBinding.buttons.setVisibility(View.GONE);
+                }
+            }
+        });
+        //endregion more的单击事件
+
+        //region 大小屏按钮单击事件监听器
+        fragmentHomeBinding.btnWeb2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //如果高度大于20就可以调到最小,对应的webView最大化
+                if (fragmentHomeBinding.webScrollLine.getY() > 20){
+                    fragmentHomeBinding.webScrollLine.setGuidelineBegin(0);
+                    Log.d(TAG, "Y: "+fragmentHomeBinding.webScrollLine.getY());
+                }
+                //如果高度是最小了那么说明当前处于最大化模式,需要高度增大,对应的webViw可视面积变小
+                else{
+                    int height = (int) sharedPreferences.getFloat(getString(R.string.webBoxH), 300.0f);
+                    fragmentHomeBinding.webScrollLine.setGuidelineBegin(height);
+                }
+            }
+        });
+        //endregion Button翻译本句的单击事件监听器
+
 
 
         //region webView的触摸监听器,用于设置WebView默认滚动到的高度
@@ -161,7 +212,7 @@ public class HomeFragment extends Fragment {
         });
 //endregion 字母索引监听器
 
-        //region 新单词监听器,查词
+        //region 新单词监听器,也就是inputBox2的查词
         fragmentHomeBinding.inputBox2.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -170,8 +221,12 @@ public class HomeFragment extends Fragment {
                 //有不同的撇号,直撇号,和弯撇号
                 String cleanWord = checkedWord.replaceAll("[^a-zA-Z’`'-]", "");//删除不相关字符
 
+                //播放当前词
+                play(cleanWord,TextToSpeech.QUEUE_FLUSH);
 
-
+                //记录当前词汇索引
+                editor.putInt(getString(R.string.key_wordPointer),wordPointer);
+                editor.commit();
 
                 //网页查词
 //                webView.loadUrl("http://m.youdao.com/dict?le=eng&q=" + cleanWord);
@@ -190,7 +245,6 @@ public class HomeFragment extends Fragment {
 //endregion 新单词监听器
 
         //region webView的相关设置
-
         webView.setWebViewClient(new WebViewClient() {
             //防止在网页view里点击和会跳转到其它的浏览器
             //系统默认会通过手机浏览器打开网页，为了能够直接通过WebView显示网页，则必须设置
@@ -250,12 +304,12 @@ public class HomeFragment extends Fragment {
         //endregion 搜索按钮的单击事件
 
         //region OnTouchListener,用来滑动修改"帘子"高度的监听器
-        fragmentHomeBinding.drawableTextView.setOnTouchListener(new View.OnTouchListener() {
+        fragmentHomeBinding.drawable.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                editor.putFloat(getString(R.string.webBoxH), event.getRawY());
-                editor.commit();
                 if (event.getRawY() > fragmentHomeBinding.line3.getBottom() && event.getRawY() < fragmentHomeBinding.line10.getBottom()) {
+                    editor.putFloat(getString(R.string.webBoxH), event.getRawY());
+                    editor.commit();
                     fragmentHomeBinding.webScrollLine.setGuidelineBegin((int) event.getRawY());
                 }
                 return true;
@@ -501,6 +555,10 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 //播放一下
                 play(checkedWord, TextToSpeech.QUEUE_FLUSH);
+
+                //查一下当前词
+                webView.loadUrl(dictionaryURL.replaceAll("####",checkedWord));
+
                 //显示一下后面的提示页,在字母输入正确后自动关闭
                 fragmentHomeBinding.preShowBox.setVisibility(View.VISIBLE);
                 fragmentHomeBinding.inputBox2.setVisibility(View.VISIBLE);
@@ -508,14 +566,6 @@ public class HomeFragment extends Fragment {
         });
         //endregion
 
-        //region 朗读全文的监听器
-        fragmentHomeBinding.readSentence.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                disposeSentence();
-            }
-        });
-        //endregion 加新文的方法
 
     }
 
@@ -620,8 +670,13 @@ public class HomeFragment extends Fragment {
         //怪物增血
         tipTimes.setValue(tipTimes.getValue() + 1);
 
-        //读正确的字母
-        play(String.valueOf(checkedWord.charAt(litterIndex.getValue())), TextToSpeech.QUEUE_FLUSH);
+        //查询输错的词
+        webView.loadUrl(dictionaryURL.replaceAll("####",checkedWord));
+
+
+        //获取剩余字母,以-分割
+        String remainingLetters = checkedWord.substring(litterIndex.getValue()).replaceAll("", "-");
+        play(remainingLetters,TextToSpeech.QUEUE_FLUSH);
 
     }
 //endregion
@@ -634,10 +689,6 @@ public class HomeFragment extends Fragment {
         Log.d(TAG, "disposeSentence: " + s);
         String[] strings = s.split("[,.?!:;\n] ");
         int i = strings.length - 1;
-
-        //播放最后索引的那个句子
-        Log.d(TAG, "disposeSentence: " + strings[i]);
-        play(strings[i], TextToSpeech.QUEUE_FLUSH);
 
 
         //处理句子,并在webView里显示翻译

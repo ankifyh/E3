@@ -19,6 +19,7 @@ import com.mj.e3.databinding.FragmentSetBinding;
 
 import java.util.Objects;
 
+import static com.mj.e3.HomeFragment.dictionaryURL;
 import static com.mj.e3.HomeFragment.stingIcon;
 import static com.mj.e3.HomeFragment.translateURL;
 import static com.mj.e3.MainActivity.editor;
@@ -49,6 +50,8 @@ public class SetFragment extends Fragment {
         binding.setLifecycleOwner(getActivity());//
 
         binding.editText.setText(sharedPreferences.getString(getString(R.string.emojiOfShowBox), "\uD83D\uDC64"));//加载内存里的emoji
+        binding.editText3.setText(sharedPreferences.getString(getString(R.string.key_translateURL), "空的"));//加载内存里的emoji
+        binding.editText2.setText(sharedPreferences.getString(getString(R.string.key_dictionaryURL), "空的"));//加载内存里的emoji
         return binding.getRoot();
     }
 
@@ -92,9 +95,34 @@ public class SetFragment extends Fragment {
                 editor.putString(getString(R.string.key_translateURL),s.toString());
                 editor.commit();
 
-                //顺便刷新下当下的emoji
+                //顺便刷新下当下的翻译URL
                 translateURL = sharedPreferences.getString(getString(R.string.key_translateURL),"不可能是空的");
                 CustomToast.INSTANCE.showToast(requireActivity(), translateURL);
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        //自定义查词引擎
+        binding.editText2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                editor.putString(getString(R.string.key_dictionaryURL),s.toString());
+                editor.commit();
+
+                //顺便刷新下当下的翻译URL
+                dictionaryURL = sharedPreferences.getString(getString(R.string.key_dictionaryURL),"不可能是空的");
+                CustomToast.INSTANCE.showToast(requireActivity(), dictionaryURL);
 
             }
 
