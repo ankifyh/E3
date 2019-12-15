@@ -29,7 +29,6 @@ import androidx.lifecycle.ViewModelProviders;
 import com.mj.e3.databinding.FragmentHomeBinding;
 
 import java.util.Objects;
-
 import static androidx.constraintlayout.widget.Constraints.TAG;
 import static com.mj.e3.HomeVM.litterIndex;
 import static com.mj.e3.HomeVM.nextWord;
@@ -496,12 +495,14 @@ public class HomeFragment extends Fragment {
         });
 //endregion ,,
 
-        //region 报放单词按钮监听器
-        fragmentHomeBinding.play.setOnClickListener(new View.OnClickListener() {
+        //region 提示按钮监听器
+        fragmentHomeBinding.btnTip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //播放一下
                 play(checkedWord, TextToSpeech.QUEUE_FLUSH);
+                //显示一下后面的提示页,在点击字母后关闭
+                fragmentHomeBinding.preShowBox.setVisibility(View.VISIBLE);
             }
         });
         //endregion
@@ -534,8 +535,13 @@ public class HomeFragment extends Fragment {
         //新字母上屏
         inputBox.append(rightLitter);
 
+        //检查背景页是关闭的还是开启的,如果是开着的就把它关闭
+        if(fragmentHomeBinding.preShowBox.getVisibility() == View.VISIBLE){
+            fragmentHomeBinding.preShowBox.setVisibility(View.INVISIBLE);
+        }
+
         //输入的字母正确时震动40毫秒
-        VibrateUtil.vibrate(activity, 40);//0秒后震动40毫秒
+        VibrateUtil.vibrate(activity, 20);//0秒后震动40毫秒
 
         //region 分支aa,不是最后一个字母,
         //noinspection SingleStatementInBlock
@@ -606,14 +612,17 @@ public class HomeFragment extends Fragment {
         //震动反馈,输入的字母错误时,长震动一下,给100毫秒,使用的是其中一个重载函数
         VibrateUtil.vibrate(activity, 100);
 
+        //检查背景页是关闭的还是开启的,如果是关闭的就把它打开
+        if(fragmentHomeBinding.preShowBox.getVisibility() == View.INVISIBLE){
+            fragmentHomeBinding.preShowBox.setVisibility(View.VISIBLE);
+        }
+
         //怪物增血
         tipTimes.setValue(tipTimes.getValue() + 1);
 
         //读正确的字母
         play(String.valueOf(checkedWord.charAt(litterIndex.getValue())), TextToSpeech.QUEUE_FLUSH);
 
-        //提示正确的单词
-        CustomToast.INSTANCE.showToast(activity, checkedWord);
     }
 //endregion
 

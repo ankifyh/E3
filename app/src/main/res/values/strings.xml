@@ -25,7 +25,7 @@
     <string name="回到练习页">回到练习页</string>
     <string name="占位的文本">占位的文本 Hello</string>
     <string name="tip">信息</string>
-    <string name="but_set">🔧</string>
+    <string name="but_set">设置</string>
     <string name="but_setWen">设文</string>
     <string name="btn_ou_lu">欧路</string>
     <string name="screen">大/小屏</string>
@@ -48,7 +48,7 @@
     <string name="web_back">网页后退</string>
     <string name="web_go_forword">网页前进</string>
     <string name="dp">dp</string>
-    <string name="朗读">🔊</string>
+    <string name="朗读">提示</string>
     <string name="演示文本长">这些知识一些演示文本这些知识一些演示文本这些知识一些演示文本这些知识一些演示文本这些知识一些演示文本这些知识一些演示文本这些知识一些演示文本这些知识一些演示文本这些知识一些演示文本这些知识一些演示文本</string>
     <string name="right_button">♬</string>
     <string name="left_button">♬</string>
