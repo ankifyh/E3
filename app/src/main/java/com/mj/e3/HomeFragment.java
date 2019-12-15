@@ -8,18 +8,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -55,10 +52,9 @@ public class HomeFragment extends Fragment {
     @SuppressLint("StaticFieldLeak")
     static private TextView inputBox;
     private TextView showBox;
-    static String StingIcon;//图标字符串,绘文字表情
-    private WebView webView;
-    private ProgressBar progressBar;
-    private boolean loadError = false;
+    static String stingIcon;//图标字符串,绘文字表情
+    static String translateURL;
+    private static WebView webView;
     private String searchEngine = "http://m.baidu.com/s?wd=####&ie=UTF-8";
     private static String[] wordArray;
     static String checkedWord;
@@ -90,7 +86,8 @@ public class HomeFragment extends Fragment {
         webView = fragmentHomeBinding.webView;
         webView.setScrollY((int) sharedPreferences.getFloat(getString(R.string.key_web_roll_position), 350.0f));
         fragmentHomeBinding.webScrollLine.setGuidelineBegin((int) sharedPreferences.getFloat(getString(R.string.webBoxH), 300.0f));//安卓初始化webBox高度
-        StingIcon = sharedPreferences.getString(getString(R.string.emojiOfShowBox), "\uD83D\uDC80");//安卓初始化showBox里的绘文字表情
+        stingIcon = sharedPreferences.getString(getString(R.string.emojiOfShowBox), "\uD83D\uDC80");//安卓初始化showBox里的绘文字表情
+        translateURL = sharedPreferences.getString(getString(R.string.key_translateURL),"没有设置####");
         wordArray = makeWordArray();
         checkedWord = getWordByWordPointer(wordPointer);
 
@@ -103,8 +100,6 @@ public class HomeFragment extends Fragment {
         webSettings.setAllowFileAccess(true);
         webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
 
-        //webView里面的加载动画view,是转动的
-        progressBar = fragmentHomeBinding.progressBar;
 
         inputBox = fragmentHomeBinding.inputBox;
         showBox = fragmentHomeBinding.showBox;
@@ -124,14 +119,14 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                readSentence();
+                disposeSentence();
             }
         });
         //endregion 背景box监听器
 
 
-        //region webView的触摸监听器
-        fragmentHomeBinding.webView.setOnTouchListener(new View.OnTouchListener() {
+        //region webView的触摸监听器,用于设置WebView默认滚动到的高度
+        webView.setOnTouchListener(new View.OnTouchListener() {
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -177,8 +172,10 @@ public class HomeFragment extends Fragment {
                 String cleanWord = checkedWord.replaceAll("[^a-zA-Z’`'-]", "");//删除不相关字符
 
 
+
+
                 //网页查词
-                webView.loadUrl("http://m.youdao.com/dict?le=eng&q=" + cleanWord);
+//                webView.loadUrl("http://m.youdao.com/dict?le=eng&q=" + cleanWord);
 
             }
 
@@ -194,8 +191,6 @@ public class HomeFragment extends Fragment {
 //endregion 新单词监听器
 
         //region webView的相关设置
-        //先把页面进行隐藏
-        webView.setEnabled(false);
 
         webView.setWebViewClient(new WebViewClient() {
             //防止在网页view里点击和会跳转到其它的浏览器
@@ -211,7 +206,6 @@ public class HomeFragment extends Fragment {
             //网页刚加载的时候执行的页面
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {//网页页面开始加载的时候
-                progressBar.setVisibility(View.VISIBLE);
                 super.onPageStarted(view, url, favicon);
             }
 
@@ -219,55 +213,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onPageFinished(WebView view, String url) {//网页加载结束的时候
 
-                //记得要先关闭加载动画,再去滚动页面
-                progressBar.setVisibility(View.GONE);
-
                 //webView滚一下,按照存储的那个值去读取数据,然后滚动到对应的那个位置
                 fragmentHomeBinding.webView.setScrollY((int) sharedPreferences.getFloat(getString(R.string.key_web_roll_position), 350.0f));
 
-
-                webView.setEnabled(true);//加载完就可以显示页面了
-
-
-                if (loadError) {//当网页加载失败的时候
-                    webView.loadUrl("file:///android_asset/load_err.html");
-                    //注意事项: 使用asset,而不是assets,否则会出错,和文件夹assets是不同的
-                    loadError = false;
-                }
-
             }
 
-
-            /**
-             * 页面加载错误时执行的方法，但是在6.0以下，有时候会不执行这个方法
-             * @param view
-             * @param errorCode
-             * @param description
-             * @param failingUrl
-             */
-            @Override
-            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                super.onReceivedError(view, errorCode, description, failingUrl);
-                loadError = true;
-            }
-
-
-        });
-
-        //noinspection JavaDoc
-        webView.setWebChromeClient(new WebChromeClient() {
-            /**
-             * 当WebView加载之后，返回 HTML 页面的标题 Title
-             * @param view
-             * @param title
-             */
-            @Override
-            public void onReceivedTitle(WebView view, String title) {
-                //判断标题 title 中是否包含有“error”字段，如果包含“error”字段，则设置加载失败，显示加载失败的视图
-                if (!TextUtils.isEmpty(title) && title.toLowerCase().contains("error")) {
-                    loadError = true;
-                }
-            }
         });
         //endregion webView的相关设置
 
@@ -560,7 +510,7 @@ public class HomeFragment extends Fragment {
         fragmentHomeBinding.readSentence.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readSentence();
+                disposeSentence();
             }
         });
         //endregion 加新文的方法
@@ -659,19 +609,31 @@ public class HomeFragment extends Fragment {
         //怪物增血
         tipTimes.setValue(tipTimes.getValue() + 1);
 
+        //读正确的字母
+        play(String.valueOf(checkedWord.charAt(litterIndex.getValue())), TextToSpeech.QUEUE_FLUSH);
+
         //提示正确的单词
         CustomToast.INSTANCE.showToast(activity, checkedWord);
     }
 //endregion
 
-    //region readSentence() 读英文句号"."当前词的位置
-    static private void readSentence() {
+    //region disposeSentence() 处理最后的句子
+    static private void disposeSentence() {
+
+        //对全文进行分句
         String s = fragmentHomeBinding.preShowBox.getText().toString();
-        Log.d(TAG, "readSentence: " + s);
+        Log.d(TAG, "disposeSentence: " + s);
         String[] strings = s.split("[,.?!:;\n] ");
         int i = strings.length - 1;
-        Log.d(TAG, "readSentence: " + strings[i]);
+
+        //播放最后索引的那个句子
+        Log.d(TAG, "disposeSentence: " + strings[i]);
         play(strings[i], TextToSpeech.QUEUE_FLUSH);
+
+
+        //处理句子,并在webView里显示翻译
+        webView.loadUrl(translateURL.replaceAll("####",strings[i]));
+
     }
     //endregion
 

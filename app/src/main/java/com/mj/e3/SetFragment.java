@@ -19,7 +19,8 @@ import com.mj.e3.databinding.FragmentSetBinding;
 
 import java.util.Objects;
 
-import static com.mj.e3.HomeFragment.StingIcon;
+import static com.mj.e3.HomeFragment.stingIcon;
+import static com.mj.e3.HomeFragment.translateURL;
 import static com.mj.e3.MainActivity.editor;
 import static com.mj.e3.MainActivity.sharedPreferences;
 
@@ -50,10 +51,12 @@ public class SetFragment extends Fragment {
         binding.editText.setText(sharedPreferences.getString(getString(R.string.emojiOfShowBox), "\uD83D\uDC64"));//加载内存里的emoji
         return binding.getRoot();
     }
+
     @Override
     public void onActivityCreated(@Nullable final Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        //设置自定义表情
         binding.editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -66,8 +69,33 @@ public class SetFragment extends Fragment {
                 editor.commit();
 
                 //顺便刷新下当下的emoji
-                StingIcon = sharedPreferences.getString(getString(R.string.emojiOfShowBox),"\uD83D\uDC8A");
-                CustomToast.INSTANCE.showToast(requireActivity(), StingIcon);
+                stingIcon = sharedPreferences.getString(getString(R.string.emojiOfShowBox),"\uD83D\uDC8A");
+                CustomToast.INSTANCE.showToast(requireActivity(), stingIcon);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        //设置自定义翻译引擎
+        binding.editText3.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                editor.putString(getString(R.string.key_translateURL),s.toString());
+                editor.commit();
+
+                //顺便刷新下当下的emoji
+                translateURL = sharedPreferences.getString(getString(R.string.key_translateURL),"不可能是空的");
+                CustomToast.INSTANCE.showToast(requireActivity(), translateURL);
+
             }
 
             @Override
