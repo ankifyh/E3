@@ -2,17 +2,11 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 <!--    设置背景色-->
     <solid android:color="@color/showBOX背景颜色"/>
-    <stroke
-        android:color="@color/键盘区背景颜色"
-        android:width="10dp"/>
+    <stroke/>
     <corners />
     <gradient
         android:angle="270"
         android:startColor="@color/键盘区背景颜色"
         android:endColor="@color/目标色"/>
-    <padding
-        android:top="5dp"
-        android:left="5dp"
-        android:bottom="5dp"
-        android:right="5dp"/>
+    <padding/>
 </shape>

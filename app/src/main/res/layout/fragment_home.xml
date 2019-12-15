@@ -23,25 +23,21 @@
 
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/line3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.1" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/line10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.95" />
-
-        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/boundary_line"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="46dp" />
+            app:layout_constraintGuide_begin="16dp" />
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="0dp"
+            android:layout_height="208dp"
+            android:background="#00DB3030"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/boundary_line" />
 
         <LinearLayout
             android:id="@+id/buttons"
@@ -56,7 +52,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/boundary_line"
-            tools:visibility="visible">
+            tools:visibility="gone">
 
             <Button
                 android:id="@+id/restart"
@@ -82,13 +78,13 @@
             android:id="@+id/constraintLayoutB2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="@id/webScrollLine"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/buttons">
 
             <ScrollView
-                android:id="@+id/ScrollView_right"
+                android:id="@+id/ScrollView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toTopOf="@+id/tableLayout"
@@ -139,9 +135,11 @@
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
                         tools:ignore="RtlCompat"
                         tools:text="这些知识一些演示文本" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </ScrollView>
 
@@ -159,9 +157,18 @@
                 tools:layout_conversion_absoluteHeight="379dp"
                 tools:layout_conversion_absoluteWidth="411dp">
 
+
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/first_height">
+
+                    <ImageView
+                        android:id="@+id/drawable"
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_format_line_spacing_black_24dp"
+                        android:contentDescription="@string/控制网页框大小的滑动按钮"
+                        android:textAlignment="center" />
 
                     <TextView
                         android:id="@+id/litter_index"
@@ -610,6 +617,24 @@
                     android:layout_weight="1">
 
                     <Button
+                        android:id="@+id/pieHao"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_margin="0dp"
+                        android:layout_weight="1"
+                        android:ems="1"
+                        android:lineSpacingExtra="0sp"
+                        android:lineSpacingMultiplier="0"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:text="@string/撇号"
+                        android:textAllCaps="false"
+                        android:textColor="#D50000"
+                        android:textSize="14sp" />
+
+                    <Button
                         android:id="@+id/z"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
@@ -682,23 +707,6 @@
                         android:textSize="14sp" />
 
                     <Button
-                        android:id="@+id/space"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="44dp"
-                        android:layout_margin="0dp"
-                        android:ems="1"
-                        android:lineSpacingExtra="0sp"
-                        android:lineSpacingMultiplier="0"
-                        android:maxLines="1"
-                        android:padding="0dp"
-                        android:singleLine="true"
-                        android:text="@string/space"
-                        android:textAllCaps="false"
-                        android:textColor="@color/键盘区文字颜色"
-                        android:textSize="14sp" />
-
-                    <Button
                         android:id="@+id/b"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
@@ -753,7 +761,7 @@
                         android:textSize="14sp" />
 
                     <Button
-                        android:id="@+id/pieHao"
+                        android:id="@+id/space"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="44dp"
@@ -765,9 +773,9 @@
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
-                        android:text="@string/撇号"
+                        android:text="@string/space"
                         android:textAllCaps="false"
-                        android:textColor="@color/键盘区文字颜色"
+                        android:textColor="#D50000"
                         android:textSize="14sp" />
 
                 </TableRow>
@@ -779,17 +787,6 @@
                     android:layout_weight="1">
 
                     <Button
-                        android:id="@+id/set"
-                        style="?android:attr/buttonBarStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="30dp"
-                        android:layout_weight="1"
-                        android:onClick="@{(v)->data.toSetPage(v)}"
-                        android:text="@string/but_set"
-                        android:textAllCaps="false"
-                        android:textSize="12sp" />
-
-                    <Button
                         android:id="@+id/set_text"
                         style="?android:attr/buttonBarStyle"
                         android:layout_width="0dp"
@@ -798,6 +795,7 @@
                         android:onClick="@{(v)->data.toSetWenPage(v)}"
                         android:text="@string/but_setWen"
                         android:textAllCaps="false"
+                        android:textColor="#AA00FF"
                         android:textSize="12sp" />
 
                     <Button
@@ -812,18 +810,30 @@
                         android:textSize="12sp" />
 
                     <Button
-                        android:id="@+id/btn_dict1"
+                        android:id="@+id/share1"
                         style="?android:attr/buttonBarStyle"
                         android:layout_width="0dp"
                         android:layout_height="30dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
-                        android:text="@string/btn_ou_lu"
+                        android:text="@string/btn1"
+                        android:textAllCaps="false"
+                        android:textColor="#03A9F4"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/share2"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/share2"
                         android:textAllCaps="false"
                         android:textSize="12sp" />
 
                     <Button
-                        android:id="@+id/shared"
+                        android:id="@+id/share"
                         style="?android:attr/buttonBarStyle"
                         android:layout_width="0dp"
                         android:layout_height="30dp"
@@ -831,6 +841,7 @@
                         android:layout_weight="1"
                         android:text="@string/btn_share"
                         android:textAllCaps="false"
+                        android:textColor="#3F51B5"
                         android:textSize="12sp" />
 
                     <Button
@@ -843,7 +854,8 @@
                         android:layout_weight="1"
                         android:text="@string/通配符"
                         android:textAllCaps="false"
-                        android:textSize="@dimen/字母字体大小" />
+                        android:textSize="@dimen/字母字体大小"
+                        android:visibility="gone" />
 
                     <Button
                         android:id="@+id/more"
@@ -854,112 +866,69 @@
                         android:layout_weight="1"
                         android:text="@string/btn_more"
                         android:textAllCaps="false"
+                        android:textColor="#F44336"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp">
+
+                    <Button
+                        android:id="@+id/set"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:onClick="@{(v)->data.toSetPage(v)}"
+                        android:text="@string/but_set"
+                        android:textAllCaps="false"
+                        android:textColor="#2962FF"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/btnWeb"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:text="@string/translate1"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/btnWeb3"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:text="@string/translate2"
+                        android:textColor="#00C853"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/share_instance"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1.9"
+                        android:text="@string/screen"
+                        android:textColor="#00B0FF"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/search"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:text="@string/search"
+                        android:textColor="#DD2C00"
                         android:textSize="12sp" />
 
                 </TableRow>
 
             </TableLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/webScrollLine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="484dp" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayoutC"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/webScrollLine">
-
-            <LinearLayout
-                android:id="@+id/button_group"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:background="@color/web_button_gb"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout_constraintBottom_toTopOf="webS">
-
-                <Button
-                    android:id="@+id/btnWeb"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/web_button_gb"
-                    android:text="@string/translate1"
-                    android:textSize="12sp" />
-
-                <Button
-                    android:id="@+id/btnWeb3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/web_button_gb"
-                    android:text="@string/translate2"
-                    android:textSize="12sp" />
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="30dp"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/web_back"
-                    app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
-
-                <ImageView
-                    android:id="@+id/drawable"
-                    android:layout_width="30dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/ic_format_line_spacing_black_24dp"
-                    android:contentDescription="@string/控制网页框大小的滑动按钮"
-                    android:textAlignment="center" />
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="30dp"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/web_go_forword"
-                    app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
-
-                <Button
-                    android:id="@+id/search"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/web_button_gb"
-                    android:text="@string/search"
-                    android:textSize="12sp" />
-
-                <Button
-                    android:id="@+id/btnWeb2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/web_button_gb"
-                    android:text="@string/screen"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
-
-            <WebView
-                android:id="@+id/webView"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="#00DB3030"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button_group"/>
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
