@@ -70,20 +70,6 @@
                     tools:text="145" />
 
                 <TextView
-                    android:id="@+id/show_word_view"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@{String.valueOf(data.getWord())}"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="24sp"
-                    android:visibility="visible"
-                    tools:layout_conversion_absoluteHeight="0dp"
-                    tools:layout_conversion_absoluteWidth="0dp"
-                    tools:text="word" />
-
-                <TextView
                     android:id="@+id/litter_index"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -255,19 +241,52 @@
                         tools:layout_conversion_absoluteWidth="103dp"
                         tools:text="5" />
 
-                    <TextView
-                        android:id="@+id/inputBox"
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:ellipsize="start"
-                        android:gravity="center"
-                        android:hint="@string/hint"
-                        android:singleLine="true"
-                        android:textAlignment="center"
-                        android:textColor="@color/showBox里文本的颜色"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/字体大小" />
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/inputBox2"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:paddingStart="40dp"
+                            android:paddingEnd="20dp"
+                            android:text="@{String.valueOf(data.getWord())}"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/字体的灰色"
+                            android:textSize="@dimen/字体大小"
+                            android:visibility="invisible"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:layout_conversion_absoluteHeight="0dp"
+                            tools:layout_conversion_absoluteWidth="0dp"
+                            tools:text="wordr"
+                            tools:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/inputBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ellipsize="start"
+                            android:gravity="start"
+                            android:paddingStart="40dp"
+                            android:paddingEnd="40dp"
+                            android:singleLine="true"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/showBox里文本的颜色"
+                            android:textIsSelectable="true"
+                            android:textSize="@dimen/字体大小"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:textColorHint="#ff070707" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <Button
                         android:id="@+id/btn_tip"

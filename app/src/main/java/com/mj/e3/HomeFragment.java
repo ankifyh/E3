@@ -162,7 +162,7 @@ public class HomeFragment extends Fragment {
 //endregion 字母索引监听器
 
         //region 新单词监听器,查词
-        fragmentHomeBinding.showWordView.addTextChangedListener(new TextWatcher() {
+        fragmentHomeBinding.inputBox2.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -501,8 +501,9 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 //播放一下
                 play(checkedWord, TextToSpeech.QUEUE_FLUSH);
-                //显示一下后面的提示页,在点击字母后关闭
+                //显示一下后面的提示页,在字母输入正确后自动关闭
                 fragmentHomeBinding.preShowBox.setVisibility(View.VISIBLE);
+                fragmentHomeBinding.inputBox2.setVisibility(View.VISIBLE);
             }
         });
         //endregion
@@ -536,9 +537,9 @@ public class HomeFragment extends Fragment {
         inputBox.append(rightLitter);
 
         //检查背景页是关闭的还是开启的,如果是开着的就把它关闭
-        if(fragmentHomeBinding.preShowBox.getVisibility() == View.VISIBLE){
-            fragmentHomeBinding.preShowBox.setVisibility(View.INVISIBLE);
-        }
+        fragmentHomeBinding.preShowBox.setVisibility(View.INVISIBLE);
+        fragmentHomeBinding.inputBox2.setVisibility(View.INVISIBLE);
+
 
         //输入的字母正确时震动40毫秒
         VibrateUtil.vibrate(activity, 20);//0秒后震动40毫秒
@@ -613,9 +614,8 @@ public class HomeFragment extends Fragment {
         VibrateUtil.vibrate(activity, 100);
 
         //检查背景页是关闭的还是开启的,如果是关闭的就把它打开
-        if(fragmentHomeBinding.preShowBox.getVisibility() == View.INVISIBLE){
-            fragmentHomeBinding.preShowBox.setVisibility(View.VISIBLE);
-        }
+        fragmentHomeBinding.preShowBox.setVisibility(View.VISIBLE);
+        fragmentHomeBinding.inputBox2.setVisibility(View.VISIBLE);
 
         //怪物增血
         tipTimes.setValue(tipTimes.getValue() + 1);
