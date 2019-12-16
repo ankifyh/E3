@@ -30,6 +30,8 @@ import com.mj.e3.databinding.FragmentHomeBinding;
 
 import java.util.Objects;
 
+import javax.microedition.khronos.egl.EGLDisplay;
+
 import static androidx.constraintlayout.widget.Constraints.TAG;
 import static com.mj.e3.HomeVM.litterIndex;
 import static com.mj.e3.HomeVM.nextWord;
@@ -94,7 +96,11 @@ public class HomeFragment extends Fragment {
         wordPointer = sharedPreferences.getInt(getString(R.string.key_wordPointer), 0);
         fragmentHomeBinding.showBox.setText(sharedPreferences.getString(getString(R.string.key_showBox),""));
         fragmentHomeBinding.preShowBox.setText(sharedPreferences.getString(getString(R.string.key_preShowBox),""));
+        fragmentHomeBinding.inputBox.setText(sharedPreferences.getString(getString(R.string.key_input_box),""));
         wordArray = makeWordArray();
+        nextWord.setValue(sharedPreferences.getString(getString(R.string.key_input_box2),wordArray[wordPointer]));
+        litterIndex.setValue(Integer.valueOf(sharedPreferences.getString(getString(R.string.key_letter_index),"0")));
+        tipTimes.setValue(Integer.valueOf(sharedPreferences.getString(getString(R.string.key_times),"1")));
         checkedWord = getWordByWordPointer(wordPointer);
 
         Log.d(TAG, "onActivityCreated: " + checkedWord);
@@ -153,6 +159,9 @@ public class HomeFragment extends Fragment {
             }
         });
         //endregion 背景box监听器
+
+
+
 
         //region showBox 的监听器 ,会在里面对输入的字母进行判断
         fragmentHomeBinding.showBox.addTextChangedListener(new TextWatcher() {
@@ -254,6 +263,70 @@ public class HomeFragment extends Fragment {
         });
 //endregion 字母索引监听器
 
+        //region litterIndex 监听器 ,及时保存litterIndex的值
+        fragmentHomeBinding.litterIndex.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //顺便也把字母索引的值在这里存储吧
+                editor.putString(getString(R.string.key_letter_index),fragmentHomeBinding.litterIndex.getText().toString());
+                editor.commit();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        //endregion
+
+        //region times 的监听器,及时保存好times
+        fragmentHomeBinding.times.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //顺便也把times放进去
+                editor.putString(getString(R.string.key_times),fragmentHomeBinding.times.getText().toString());
+                editor.commit();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        //endregion
+
+        //region inputBox状态监听器
+        fragmentHomeBinding.inputBox.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                //存好inputBox的状态
+                editor.putString(getString(R.string.key_input_box),inputBox.getText().toString());
+                editor.commit();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        //endregion
 
         //region 新单词监听器,也就是inputBox2的查词
         fragmentHomeBinding.inputBox2.addTextChangedListener(new TextWatcher() {
@@ -269,6 +342,8 @@ public class HomeFragment extends Fragment {
 
                 //记录当前词汇索引
                 editor.putInt(getString(R.string.key_wordPointer), wordPointer);
+                //记录inputBox2的文本
+                editor.putString(getString(R.string.key_input_box2),checkedWord);
                 editor.commit();
 
                 //网页查词
@@ -406,6 +481,8 @@ public class HomeFragment extends Fragment {
         //region 重新开始按钮监听器
         fragmentHomeBinding.restart.setOnClickListener(v -> restart());
         //endregion 重新开始按钮监听器
+
+
 
 
         //region 提示按钮监听器

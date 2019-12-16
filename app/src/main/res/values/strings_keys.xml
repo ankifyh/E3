@@ -8,6 +8,10 @@
     <string name="key_wordPointer">wordPointer</string>
     <string name="key_preShowBox">preShowBox_text</string>
     <string name="key_showBox">ShoBox_text</string>
+    <string name="key_letter_index">letterIndex</string>
+    <string name="key_times">times</string>
+    <string name="key_input_box">inoutBoxText</string>
+    <string name="key_input_box2">inoutBox2Text</string>
     <string name="key_web_roll_position">key_web_roll_position</string>
     <string name="used_text_key">used_text</string>
 
