@@ -94,7 +94,7 @@ public class HomeFragment extends Fragment {
         dictionaryURL = sharedPreferences.getString(getString(R.string.key_dictionaryURL), "没有设置");
         wordPointer = sharedPreferences.getInt(getString(R.string.key_wordPointer), 0);
         fragmentHomeBinding.showBox.setText(sharedPreferences.getString(getString(R.string.key_showBox),""));
-        fragmentHomeBinding.setText.setText(sharedPreferences.getString(getString(R.string.key_preShowBox),""));
+        fragmentHomeBinding.preShowBox.setText(sharedPreferences.getString(getString(R.string.key_preShowBox),""));
         wordArray = makeWordArray();
         checkedWord = getWordByWordPointer(wordPointer);
 
@@ -183,54 +183,41 @@ public class HomeFragment extends Fragment {
         //endregion more的单击事件
 
         //region share1 单击事件
-        fragmentHomeBinding.share1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent shareIntent = new Intent();
-                shareIntent.setAction(Intent.ACTION_SEND);
-                shareIntent.setType("text/plain");
-                shareIntent.putExtra(Intent.EXTRA_TEXT, checkedWord);
-                startActivity(shareIntent);
-            }
+        fragmentHomeBinding.share1.setOnClickListener(v -> {
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, checkedWord);
+            startActivity(shareIntent);
         });
         //endregion
 
 
         //region share 单机事件
-        fragmentHomeBinding.share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent shareIntent = new Intent();
-                shareIntent.setAction(Intent.ACTION_SEND);
-                shareIntent.setType("text/plain");
-                shareIntent.putExtra(Intent.EXTRA_TEXT, checkedWord);
+        fragmentHomeBinding.share.setOnClickListener(v -> {
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, checkedWord);
 //切记需要使用Intent.createChooser，否则会出现别样的应用选择框，您可以试试
-                shareIntent = Intent.createChooser(shareIntent, "分享当前单词到");
-                startActivity(shareIntent);
-            }
+            shareIntent = Intent.createChooser(shareIntent, "分享当前单词到");
+            startActivity(shareIntent);
         });
         //endregion share 单击事件
 
         //region 大小屏按钮单击事件监听器
-        fragmentHomeBinding.shareInstance.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        fragmentHomeBinding.shareInstance.setOnClickListener(v -> {
 
-            }
         });
         //endregion Button翻译本句的单击事件监听器
 
 
         //region webView的触摸监听器,用于设置WebView默认滚动到的高度
-        webView.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                //注意这里存入的不是event的属性,而是webView当前的属性
-                editor.putFloat(getString(R.string.key_web_roll_position), fragmentHomeBinding.webView.getScrollY());
-                editor.commit();
-                return false;
-            }
+        webView.setOnTouchListener((v, event) -> {
+            //注意这里存入的不是event的属性,而是webView当前的属性
+            editor.putFloat(getString(R.string.key_web_roll_position), fragmentHomeBinding.webView.getScrollY());
+            editor.commit();
+            return false;
         });
         //endregion webView的触摸监听器
 
@@ -423,6 +410,13 @@ public class HomeFragment extends Fragment {
 
                 //显示一下后面的提示页,在字母输入正确后自动关闭
                 fragmentHomeBinding.inputBox2.setVisibility(View.VISIBLE);
+
+                //实现查词
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, checkedWord);
+                startActivity(shareIntent);
             }
         });
         //endregion
