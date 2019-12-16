@@ -8,15 +8,17 @@
         <variable
             name="data"
             type="com.mj.e3.HomeVM" />
+
         <import
             alias="HomeFragment"
-            type="com.mj.e3.HomeFragment"/>
+            type="com.mj.e3.HomeFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayoutA"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/导航栏颜色"
         android:orientation="vertical"
         tools:context=".HomeFragment">
 
@@ -41,7 +43,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="RtlCompat"
             tools:text="这些只是一些演示文本 "
-            tools:visibility="visible" />
+            tools:visibility="gone" />
 
         <WebView
             android:id="@+id/webView"
@@ -51,7 +53,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
+            app:layout_constraintTop_toTopOf="parent">
 
         </WebView>
 
@@ -59,6 +61,7 @@
             android:id="@+id/constraintLayoutB2"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="24dp"
             android:background="#FFF8E1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -176,9 +179,9 @@
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <Button
+                    <TextView
                         android:id="@+id/btn_tip"
-                        style="?android:attr/buttonBarStyle"
+
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_margin="0dp"
@@ -194,182 +197,202 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp">
 
-                    <Button
+                    <TextView
                         android:id="@+id/q"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/q"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/w"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/w"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/e"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/e"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/r"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/r"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/t"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/t"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/y"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/y"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/u"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/u"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/i"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/i"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/o"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/o"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/p"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/p"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
@@ -379,167 +402,184 @@
                 <TableRow
                     android:id="@+id/asd"
                     android:layout_width="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:gravity="center">
 
-                    <Button
+                    <TextView
                         android:id="@+id/a"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/a"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/s"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/s"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/d"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/d"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/f"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/f"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
 
-                    <Button
+                    <TextView
                         android:id="@+id/g"
-                        style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/g"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/h"
-                        style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/h"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/j"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/j"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/k"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/k"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/l"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/l"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
@@ -549,148 +589,165 @@
                 <TableRow
                     android:id="@+id/zxc"
                     android:layout_width="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:gravity="center">
 
-                    <Button
+                    <TextView
                         android:id="@+id/z"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/z"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/x"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/x"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/c"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/c"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/v"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/v"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/b"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/b"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/n"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/n"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/m"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/m"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/pieHao"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
                         android:ems="1"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/撇号"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@color/键盘区文字颜色"
                         android:textSize="14sp" />
@@ -698,19 +755,21 @@
                 </TableRow>
 
                 <TableRow
-                    style="?android:attr/buttonBarStyle"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:gravity="center">
 
-                    <Button
+                    <TextView
                         android:id="@+id/share1"
-                        style="?android:attr/buttonBarStyle"
+
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:text="@string/btn1"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="#03A9F4"
                         android:textSize="12sp" />
@@ -718,9 +777,11 @@
                     <TextView
                         android:id="@+id/times"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="0dp"
                         android:gravity="center"
                         android:text="@{String.valueOf(data.getTipTimes())}"
+                        android:textAlignment="center"
                         android:textColor="@color/colorAccent"
                         android:textSize="14sp"
                         android:textStyle="bold"
@@ -728,45 +789,51 @@
                         tools:layout_conversion_absoluteWidth="103dp"
                         tools:text="5" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/space"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="4"
+                        android:gravity="center"
                         android:lineSpacingExtra="0sp"
                         android:lineSpacingMultiplier="0"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:text="@string/space"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="#304FFE"
                         android:textSize="12sp"
-                        android:textStyle="italic" />
+                        android:textStyle="bold" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/tong"
-                        style="?android:attr/buttonBarStyle"
+
                         android:layout_width="0dp"
-                        android:layout_height="30dp"
+                        android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_marginEnd="10dp"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:text="@string/通配符"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textSize="@dimen/字母字体大小"
                         android:visibility="gone" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/more"
-                        style="?android:attr/buttonBarStyle"
+
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:text="@string/btn_more"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="#F44336"
                         android:textSize="12sp" />
@@ -775,81 +842,95 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="30dp">
+                    android:layout_height="30dp"
+                    android:gravity="center">
 
-                    <Button
+                    <TextView
                         android:id="@+id/set"
-                        style="?android:attr/buttonBarStyle"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:onClick="@{(v)->data.toSetPage(v)}"
                         android:text="@string/but_set"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="#2962FF"
                         android:textSize="12sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/set_text"
-                        style="?android:attr/buttonBarStyle"
+
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:onClick="@{(v)->data.toSetWenPage(v)}"
                         android:text="@string/but_setWen"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="#AA00FF"
                         android:textSize="12sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/share"
-                        style="?android:attr/buttonBarStyle"
+
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:text="@string/btn_share"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="#3F51B5"
                         android:textSize="12sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/btn_redo"
-                        style="?android:attr/buttonBarStyle"
+
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_margin="0dp"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:text="@string/btn_redo"
+                        android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textSize="12sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/btnWeb"
-                        style="?android:attr/buttonBarStyle"
+
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:text="@string/translate1"
+                        android:textAlignment="center"
                         android:textSize="12sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/btnWeb3"
-                        style="?android:attr/buttonBarStyle"
+
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:text="@string/translate2"
+                        android:textAlignment="center"
                         android:textColor="#00C853"
                         android:textSize="12sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/search"
-                        style="?android:attr/buttonBarStyle"
+
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:text="@string/search"
+                        android:textAlignment="center"
                         android:textColor="#DD2C00"
                         android:textSize="12sp" />
 
@@ -859,48 +940,52 @@
                     android:id="@+id/tableRow3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="center"
                     android:visibility="gone"
                     tools:visibility="visible">
 
                     <TextView
                         android:id="@+id/litter_index"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
                         android:gravity="center"
                         android:text="@{String.valueOf(data.getLitterIndex())}"
                         android:textAlignment="center"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="14sp"
-                        tools:layout_conversion_absoluteHeight="234dp"
-                        tools:layout_conversion_absoluteWidth="206dp"
+                        android:textSize="12sp"
                         tools:text="7" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/restart"
-                        style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:text="@string/restart"
+                        android:textAlignment="center"
                         android:textSize="12sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/share_instance"
-                        style="?android:attr/buttonBarStyle"
+
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:text="@string/screen"
+                        android:textAlignment="center"
                         android:textColor="#00B0FF"
                         android:textSize="12sp" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/play_all"
-                        style="?android:attr/buttonBarButtonStyle"
+
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:text="@string/play_all_stop"
+                        android:textAlignment="center"
                         android:textSize="12sp" />
                 </TableRow>
 
