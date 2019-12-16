@@ -5,7 +5,8 @@
     <color name="colorAccent">#D81B60</color>
     <color name="可滚动部分背景颜色">#425066</color>
     <color name="showBOX背景颜色">#11000000</color>
-    <color name="键盘区背景颜色">#E0F2F1</color>
+    <color name="键盘区背景颜色">#F5E6B9</color>
+    <color name="深键盘区背景颜色">#DFD2AA</color>
     <color name="showBox里文本的颜色">#000000</color>
     <color name="colorBasicWhite">#ffffff</color>
     <color name="colorAutoDismissToast">#77000000</color>
@@ -18,4 +19,5 @@
     <color name="show_box1_bg">#B2DFDB</color>
     <color name="字体的灰色">#CECBCB</color>
     <color name="键盘区文字颜色">#070707</color>
+    <color name="导航栏颜色">#C2B792</color>
 </resources>

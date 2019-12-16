@@ -17,10 +17,31 @@
         android:id="@+id/constraintLayoutA"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/ground_floor"
         android:orientation="vertical"
         tools:context=".HomeFragment">
 
+
+        <TextView
+            android:id="@+id/pre_show_box"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|end"
+            android:lineSpacingMultiplier="1.2"
+            android:paddingStart="14sp"
+            android:paddingTop="18sp"
+            android:paddingEnd="14sp"
+            android:radius="15dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/showBox里文本的颜色"
+            android:textIsSelectable="true"
+            android:textSize="18sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlCompat"
+            tools:text="这些只是一些演示文本 "
+            tools:visibility="visible" />
 
         <WebView
             android:id="@+id/webView"
@@ -30,12 +51,15 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" >
+
+        </WebView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutB2"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="#FFF8E1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,35 +78,12 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/pre_show_box"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/show_box2"
-                        android:gravity="bottom|end"
-                        android:lineSpacingMultiplier="1.7"
-                        android:paddingStart="14sp"
-                        android:paddingTop="18sp"
-                        android:paddingEnd="14sp"
-                        android:radius="15dp"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/字体的灰色"
-                        android:textIsSelectable="true"
-                        android:textSize="18sp"
-                        android:visibility="visible"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="RtlCompat"
-                        tools:text="这些知识一些演示文本 123"
-                        tools:visibility="visible" />
-
-                    <TextView
                         android:id="@+id/showBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/绝对透明"
                         android:gravity="bottom|end"
-                        android:lineSpacingMultiplier="1.7"
+                        android:lineSpacingMultiplier="1.6"
                         android:paddingStart="14sp"
                         android:paddingTop="18sp"
                         android:paddingEnd="14sp"
@@ -96,7 +97,7 @@
                         app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
                         tools:ignore="RtlCompat"
-                        tools:text="这些知识一些演示文本" />
+                        tools:text="这些知识一些演示文本\n这些知识一些演示文本" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </ScrollView>
@@ -105,7 +106,7 @@
                 android:id="@+id/tableLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="#FFECB3"
+                android:background="@color/键盘区背景颜色"
                 android:padding="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -183,7 +184,9 @@
                         android:layout_margin="0dp"
                         android:text="@string/朗读"
                         android:textAllCaps="false"
-                        android:textSize="12sp" />
+                        android:textColor="#FF0827D1"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
                 </TableRow>
 
                 <TableRow
@@ -740,7 +743,8 @@
                         android:text="@string/space"
                         android:textAllCaps="false"
                         android:textColor="#304FFE"
-                        android:textSize="14sp" />
+                        android:textSize="12sp"
+                        android:textStyle="italic" />
 
                     <Button
                         android:id="@+id/tong"
