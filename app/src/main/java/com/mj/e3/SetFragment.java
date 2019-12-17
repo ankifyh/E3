@@ -52,6 +52,7 @@ public class SetFragment extends Fragment {
         binding.editText.setText(sharedPreferences.getString(getString(R.string.emojiOfShowBox), "\uD83D\uDC64"));//加载内存里的emoji
         binding.editText3.setText(sharedPreferences.getString(getString(R.string.key_translateURL), "空的"));//加载内存里的emoji
         binding.editText2.setText(sharedPreferences.getString(getString(R.string.key_dictionaryURL), "空的"));//加载内存里的emoji
+        binding.editText4.setText(sharedPreferences.getString(getString(R.string.key_search_engine), "空的"));//加载内存里的emoji
         return binding.getRoot();
     }
 
@@ -131,6 +132,30 @@ public class SetFragment extends Fragment {
 
             }
         });
+        //自定义搜索引擎
+        binding.editText4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                editor.putString(getString(R.string.key_search_engine),s.toString());
+                editor.commit();
+
+                //Toast检查一下
+                CustomToast.INSTANCE.showToast(requireActivity(), sharedPreferences.getString(getString(R.string.key_search_engine),"不可能是空的"));
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
     }
 
 }

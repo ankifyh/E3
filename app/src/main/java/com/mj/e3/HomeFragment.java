@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
@@ -19,6 +20,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,8 +31,6 @@ import androidx.lifecycle.ViewModelProviders;
 import com.mj.e3.databinding.FragmentHomeBinding;
 
 import java.util.Objects;
-
-import javax.microedition.khronos.egl.EGLDisplay;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 import static com.mj.e3.HomeVM.litterIndex;
@@ -94,13 +94,13 @@ public class HomeFragment extends Fragment {
         translateURL = sharedPreferences.getString(getString(R.string.key_translateURL), "没有设置####");
         dictionaryURL = sharedPreferences.getString(getString(R.string.key_dictionaryURL), "没有设置");
         wordPointer = sharedPreferences.getInt(getString(R.string.key_wordPointer), 0);
-        fragmentHomeBinding.showBox.setText(sharedPreferences.getString(getString(R.string.key_showBox),""));
-        fragmentHomeBinding.preShowBox.setText(sharedPreferences.getString(getString(R.string.key_preShowBox),""));
-        fragmentHomeBinding.inputBox.setText(sharedPreferences.getString(getString(R.string.key_input_box),""));
+        fragmentHomeBinding.showBox.setText(sharedPreferences.getString(getString(R.string.key_showBox), ""));
+        fragmentHomeBinding.preShowBox.setText(sharedPreferences.getString(getString(R.string.key_preShowBox), ""));
+        fragmentHomeBinding.inputBox.setText(sharedPreferences.getString(getString(R.string.key_input_box), ""));
         wordArray = makeWordArray();
-        nextWord.setValue(sharedPreferences.getString(getString(R.string.key_input_box2),wordArray[wordPointer]));
-        litterIndex.setValue(Integer.valueOf(sharedPreferences.getString(getString(R.string.key_letter_index),"0")));
-        tipTimes.setValue(Integer.valueOf(sharedPreferences.getString(getString(R.string.key_times),"1")));
+        nextWord.setValue(sharedPreferences.getString(getString(R.string.key_input_box2), wordArray[wordPointer]));
+        litterIndex.setValue(Integer.valueOf(sharedPreferences.getString(getString(R.string.key_letter_index), "0")));
+        tipTimes.setValue(Integer.valueOf(sharedPreferences.getString(getString(R.string.key_times), "1")));
         checkedWord = getWordByWordPointer(wordPointer);
 
         Log.d(TAG, "onActivityCreated: " + checkedWord);
@@ -130,10 +130,9 @@ public class HomeFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 int times = Integer.valueOf(s.toString());
-                if (times > 1){
+                if (times > 1) {
                     fragmentHomeBinding.tableLayout.setBackgroundResource(R.color.深键盘区背景颜色);
-                }
-                else {
+                } else {
                     fragmentHomeBinding.tableLayout.setBackgroundResource(R.color.键盘区背景颜色);
                 }
             }
@@ -149,7 +148,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                editor.putString(getString(R.string.key_preShowBox),fragmentHomeBinding.preShowBox.getText().toString());
+                editor.putString(getString(R.string.key_preShowBox), fragmentHomeBinding.preShowBox.getText().toString());
                 editor.commit();
             }
 
@@ -159,8 +158,6 @@ public class HomeFragment extends Fragment {
             }
         });
         //endregion 背景box监听器
-
-
 
 
         //region showBox 的监听器 ,会在里面对输入的字母进行判断
@@ -174,7 +171,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                editor.putString(getString(R.string.key_showBox),fragmentHomeBinding.showBox.getText().toString());
+                editor.putString(getString(R.string.key_showBox), fragmentHomeBinding.showBox.getText().toString());
                 editor.commit();
             }
 
@@ -185,7 +182,8 @@ public class HomeFragment extends Fragment {
 //endregion ,,
 
         //region 翻译本句Button的单击事件监听器
-        fragmentHomeBinding.btnWeb3.setOnClickListener(v -> disposeSentence());
+        fragmentHomeBinding.transSentence.setOnClickListener(v ->
+                disposeSentence());
         //endregion Button翻译本句的单击事件监听器
 
         //region more的单击事件
@@ -201,6 +199,15 @@ public class HomeFragment extends Fragment {
         });
         //endregion more的单击事件
 
+        //region
+        fragmentHomeBinding.search.setOnClickListener(v -> {
+            Intent intent = new Intent();
+            intent.setAction("android.intent.action.VIEW");
+            Uri content_url = Uri.parse(sharedPreferences.getString(getString(R.string.key_search_engine), "http://m.baidu.com/s?wd=####&ie=UTF-8").replaceAll("####", cleanWord));
+            intent.setData(content_url);
+            startActivity(intent);
+        });
+        //endregion
         //region share1 单击事件
         fragmentHomeBinding.share1.setOnClickListener(v -> {
             Intent shareIntent = new Intent();
@@ -254,8 +261,8 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                //对当前字符进行判断,或对当前单词长度进行判断
-                if (String.valueOf(checkedWord.charAt(litterIndex.getValue())).matches("[^a-zA-Z’ ]")||checkedWord.length()<=3) {//如果当前字符不是字母,就自动加上屏幕
+                //对当前字符进行判断,
+                if (String.valueOf(checkedWord.charAt(litterIndex.getValue())).matches("[^a-zA-Z’ ]")) {//如果当前字符不是字母,就自动加上屏幕
                     rightLitter = String.valueOf(checkedWord.charAt(litterIndex.getValue()));
                     onScreen();
                 }
@@ -274,7 +281,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //顺便也把字母索引的值在这里存储吧
-                editor.putString(getString(R.string.key_letter_index),fragmentHomeBinding.litterIndex.getText().toString());
+                editor.putString(getString(R.string.key_letter_index), fragmentHomeBinding.litterIndex.getText().toString());
                 editor.commit();
             }
 
@@ -295,7 +302,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //顺便也把times放进去
-                editor.putString(getString(R.string.key_times),fragmentHomeBinding.times.getText().toString());
+                editor.putString(getString(R.string.key_times), fragmentHomeBinding.times.getText().toString());
                 editor.commit();
             }
 
@@ -317,7 +324,7 @@ public class HomeFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 //存好inputBox的状态
-                editor.putString(getString(R.string.key_input_box),inputBox.getText().toString());
+                editor.putString(getString(R.string.key_input_box), inputBox.getText().toString());
                 editor.commit();
             }
 
@@ -333,17 +340,21 @@ public class HomeFragment extends Fragment {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+                //弄一个前置词,默认是空字符串,下面的if语句是赋值
+                String beforeWord = "";
+                if (wordPointer > 0)
+                    beforeWord = wordArray[wordPointer - 1].replaceAll("[^a-zA-Z’`'-]", "");
 
                 //有不同的撇号,直撇号,和弯撇号
                 cleanWord = checkedWord.replaceAll("[^a-zA-Z’`'-]", "");//删除不相关字符
 
                 //播放当前词
-                play(cleanWord, TextToSpeech.QUEUE_FLUSH);
+                play(" " + beforeWord + " " + cleanWord, TextToSpeech.QUEUE_FLUSH);
 
                 //记录当前词汇索引
                 editor.putInt(getString(R.string.key_wordPointer), wordPointer);
                 //记录inputBox2的文本
-                editor.putString(getString(R.string.key_input_box2),checkedWord);
+                editor.putString(getString(R.string.key_input_box2), checkedWord);
                 editor.commit();
 
                 //网页查词
@@ -356,8 +367,8 @@ public class HomeFragment extends Fragment {
                 //preShowBox加词
                 fragmentHomeBinding.preShowBox.append(checkedWord);
                 //showBox加词
-                if (wordPointer>0){
-                    fragmentHomeBinding.showBox.append(wordArray[wordPointer-1]);
+                if (wordPointer > 0) {
+                    fragmentHomeBinding.showBox.append(wordArray[wordPointer - 1]);
                 }
             }
 
@@ -416,13 +427,6 @@ public class HomeFragment extends Fragment {
         });
         //endregion 播放全文按钮的监听器
 
-        // region 搜索按钮的单击事件
-        fragmentHomeBinding.search.setOnClickListener(v -> {
-            String s = searchEngine.replace("####", checkedWord);
-            webView.loadUrl(s);
-
-        });
-        //endregion 搜索按钮的单击事件
 
         //region OnTouchListener,滑块,目前处于已经无用状态
         fragmentHomeBinding.drawable.setOnTouchListener((v, event) -> true);
@@ -474,15 +478,18 @@ public class HomeFragment extends Fragment {
         fragmentHomeBinding.n.setOnClickListener(v -> judge("[jkbnm]"));
         fragmentHomeBinding.m.setOnClickListener(v -> judge("[klnmv]"));
         fragmentHomeBinding.pieHao.setOnClickListener(v -> judge("[’']"));
-        fragmentHomeBinding.space.setOnClickListener(v -> judge("[ ]"));
+        fragmentHomeBinding.space.setOnClickListener(v -> {
+            if (litterIndex.getValue() == checkedWord.length()-1)
+                onScreen();
+            else
+                CustomToast.INSTANCE.showToast(requireActivity(),"你还单词没输完!");
+        });
         fragmentHomeBinding.tong.setOnClickListener(v -> judge("[a-z’ ]"));
 //endregion 三个 button 的监听器
 
         //region 重新开始按钮监听器
         fragmentHomeBinding.restart.setOnClickListener(v -> restart());
         //endregion 重新开始按钮监听器
-
-
 
 
         //region 提示按钮监听器
@@ -618,7 +625,7 @@ public class HomeFragment extends Fragment {
 //endregion
 
     //region disposeSentence() 处理最后的句子
-    static private void disposeSentence() {
+    private void disposeSentence() {
 
         //对全文进行分句
         String s = fragmentHomeBinding.preShowBox.getText().toString();
@@ -629,6 +636,13 @@ public class HomeFragment extends Fragment {
 
         //处理句子,并在webView里显示翻译
         webView.loadUrl(translateURL.replaceAll("####", strings[i]));
+
+        //一次性选择翻译
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, strings[i]);
+        startActivity(shareIntent);
 
     }
     //endregion
@@ -647,30 +661,30 @@ public class HomeFragment extends Fragment {
                         activity.getString(R.string.default_text));
 
         //英文替换
-        ori = ori.replaceAll(",",",####");
-        ori = ori.replaceAll("\\.",".####");
-        ori = ori.replaceAll("\\?","?####");
-        ori = ori.replaceAll("!","!####");
-        ori = ori.replaceAll(";",";####");
-        ori = ori.replaceAll(":",":####");
-        ori = ori.replaceAll("\\)",")####");
-        ori = ori.replaceAll(",",",####");
+        ori = ori.replaceAll(",", ",####");
+        ori = ori.replaceAll("\\.", ".####");
+        ori = ori.replaceAll("\\?", "?####");
+        ori = ori.replaceAll("!", "!####");
+        ori = ori.replaceAll(";", ";####");
+        ori = ori.replaceAll(":", ":####");
+        ori = ori.replaceAll("\\)", ")####");
+        ori = ori.replaceAll(",", ",####");
 
         //中文替换
-        ori = ori.replaceAll("。","。####");
-        ori = ori.replaceAll("？","？####");
-        ori = ori.replaceAll("！","！####");
-        ori = ori.replaceAll("；","；####");
-        ori = ori.replaceAll("：","：####");
-        ori = ori.replaceAll("）","）####");
-        ori = ori.replaceAll("，","，####");
+        ori = ori.replaceAll("。", "。####");
+        ori = ori.replaceAll("？", "？####");
+        ori = ori.replaceAll("！", "！####");
+        ori = ori.replaceAll("；", "；####");
+        ori = ori.replaceAll("：", "：####");
+        ori = ori.replaceAll("）", "）####");
+        ori = ori.replaceAll("，", "，####");
 
         //空格替换
         ori = ori.replaceAll("\\s", "####");
         Log.d(TAG, "makeWordArray1: " + ori);
 
         //把所有的#字符替换成空格加三个###的形式
-        ori = ori.replaceAll("#+"," ###");
+        ori = ori.replaceAll("#+", " ###");
         Log.d(TAG, "makeWordArray2: " + ori);
 
         //用###分割!
